@@ -7,3 +7,40 @@
 body{
     font-family: 'Montserrat', sans-serif;;
 }
+
+.bg-grey{
+    padding: 20px;
+    background-color: rgb(60, 59, 59);
+}
+
+.style-text{
+    font-weight: 800;
+    background-color: rgb(0, 141, 145);
+    color: white
+}
+
+.bg-light-blue{
+    background-color: rgba(60, 205, 210, 0.315);
+    border-bottom: 1px solid rgb(0, 141, 145);
+}
+
+.bg-light-blue:hover{
+    background-color: rgba(139, 192, 194, 0.846);
+}
+
+.button{
+    background-color:  rgb(60, 59, 59);
+    color: white;
+    margin-top: 10px;
+}
+
+.button:hover{
+    background-color: rgba(60, 59, 59, 0.74);
+    color: white;
+}
+
+.form-style{
+    width: 300px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
