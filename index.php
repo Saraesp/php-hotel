@@ -68,14 +68,19 @@
                 <th>DISTANCE TO CENTER</th>
             </thead>
             <tbody>
-                <?php foreach($hotels as $hotel) ?>
-                <tr>
-                    <td><?php ?></td>
-                    <td><?php ?></td>
-                    <td><?php ?></td>
-                    <td><?php ?></td>
-                    <td><?php ?></td>
-                </tr>
+                <?php foreach($hotels as $hotel){ ?>
+                    <tr>
+                        <td><?php echo $hotel['name']; ?></td>
+                        <td><?php echo $hotel['description']; ?></td>
+                        <td><?php if($hotel['parking']){
+                                echo 'Sì';
+                            }else{
+                                echo 'No';
+                            };?></td>
+                        <td><?php echo $hotel['vote']; ?></td>
+                        <td><?php echo $hotel['distance_to_center']; ?></td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
