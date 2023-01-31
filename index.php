@@ -40,7 +40,7 @@
 
     ];
 
-    $filteredHotels = $hotels
+    $filteredHotels = $hotels;
 
     if(isset($_GET['vote']) && $_GET['vote'] !== ''){
         
@@ -50,7 +50,7 @@
                 $tempHotels [] = $hotel;
             }
         }
-        $filteredHotels = $tempHotels
+        $filteredHotels = $tempHotels;
     }
 
     if(isset($_GET['parking']) && $_GET['parking'] !== ''){
@@ -61,7 +61,7 @@
                 $tempHotels [] = $hotel;
             }
         }
-        $filteredHotels = $tempHotels
+        $filteredHotels = $tempHotels;
     }
 
 ?>
@@ -102,8 +102,7 @@
                             </select>
                         </div>
                         <div class="col-auto">
-                                <button type="submit" class="btn btn-sm btn-primary"></button>
-                                <button></button>
+                                <button type="submit" class="btn btn-sm btn-primary">Filtra</button>
                         </div>
                     </form>
                 </div>
