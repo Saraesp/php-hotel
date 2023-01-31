@@ -40,6 +40,30 @@
 
     ];
 
+    $filteredHotels = $hotels
+
+    if(isset($_GET['vote']) && $_GET['vote'] !== ''){
+        
+        $tempHotels = [];
+        foreach($filteredHotels as $hotel){
+            if($hotel['vote'] >= $_GET['vote']){
+                $tempHotels [] = $hotel;
+            }
+        }
+        $filteredHotels = $tempHotels
+    }
+
+    if(isset($_GET['parking']) && $_GET['parking'] !== ''){
+        
+        $tempHotels = [];
+        foreach($filteredHotels as $hotel){
+            if($hotel['parking'] == $_GET['parking']){
+                $tempHotels [] = $hotel;
+            }
+        }
+        $filteredHotels = $tempHotels
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -62,9 +86,28 @@
             <h1 class="border-start border-black text-white">HOTEL TABLE</h1>
         </div>
 
-        <div class="d-flex pe-2">
-        <input class="form-control form-control-sm form-style" type="text">
-        <button type="button" class="btn button">Cerca</button>
+        <div>
+            <div class="row">
+                <div class="col-12">
+                    <form action="./index.php" method="GET" class="row my-3 align-items-end">
+                        <div class="col-md-4">
+                            <label class="control-label">Vote</label>
+                            <input type="number" class="form-control" name="vote" placeholder="Vote" value="<?php echo isset ($_GET['vote']) ? $_GET['vote'] : '' ?>">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label">Parking</label>
+                            <select name="parking" class="form-control" placeholder="Parking">
+                                <option value="0" <?php (isset($_GET['parking']) && $_GET['parking'] == 0) ?>>Sì</option>
+                                <option value="1" <?php (isset($_GET['parking']) && $_GET['parking'] == 1) ?>>No</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                                <button type="submit" class="btn btn-sm btn-primary"></button>
+                                <button></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <table class="mt-4 w-100 table-hover">
@@ -76,15 +119,12 @@
                 <th class="p-3 text-center style-text">DISTANCE TO CENTER</th>
             </thead>
             <tbody class="">
-                <?php foreach($hotels as $hotel){ ?>
+                <?php foreach($filteredHotels as $hotel){ ?>
                     <tr class="bg-light-blue">
                         <td class="p-2 table-blue"><?php echo $hotel['name']; ?></td>
                         <td class="p-2 text-center"><?php echo $hotel['description']; ?></td>
-                        <td class="text-center p-2"><?php if($hotel['parking']){
-                                echo 'Sì';
-                            }else{
-                                echo 'No';
-                            };?></td>
+                        <td class="text-center p-2"><?php echo $hotel['parking'] ? 'Si'
+                                : 'No';?></td>
                         <td class="text-center p-2"><?php echo $hotel['vote']; ?></td>
                         <td class="text-center p-2"><?php echo $hotel['distance_to_center']; ?></td>
                     </tr>
